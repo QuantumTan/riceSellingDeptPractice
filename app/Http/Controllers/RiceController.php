@@ -13,7 +13,7 @@ class RiceController extends Controller
      */
     public function index()
     {
-        $rices = Rice::latest()->paginate(10);
+        $rices = Rice::latest()->paginate(4);
         return view('rice.index', compact('rices'));
     }
 
@@ -29,49 +29,49 @@ class RiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRiceRequest $request, Rice $rices)
+    public function store(StoreRiceRequest $request)
     {
         //
         Rice::create($request->validated());
 
-        return redirect()->route('rice.index')->with('success', 'Rice is added!');
+        return redirect()->route('rices.index')->with('success', 'Rice is added!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Rice $rices)
+    public function show(Rice $rice)
     {
         //
-        return view('rice.show', compact('rices'));
+        return view('rice.show', compact('rice'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Rice $rices)
+    public function edit(Rice $rice)
     {
         //
-        return view('rice.edit', compact('rices'));
+        return view('rice.edit', compact('rice'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRiceRequest $request, Rice $rices)
+    public function update(UpdateRiceRequest $request, Rice $rice)
     {
         //
-        $rices->update($request->validated());
-        return redirect()->route('rice.index')->with('success', 'Rice is updated!');
+        $rice->update($request->validated());
+        return redirect()->route('rices.index')->with('success', $rice->rice_name . '  is updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rice $rices)
+    public function destroy(Rice $rice)
     {
-        $rices->delete();
+        $rice->delete();
 
-        return redirect()->route('rice.index')->with('success', 'Rice deleted!');
+        return redirect()->route('rices.index')->with('success', $rice->rice_name .  '  deleted!');
     }
 }
