@@ -17,13 +17,13 @@ class Order_item extends Model
 
 
     protected $fillable = [
-        'rice_id',
+        'rices_id',
         'order_id',
         'qty',
         'subtotal',
     ];
 
-    public function rice()
+    public function rices()
     {
         return $this->belongsTo(Rice::class);
     }

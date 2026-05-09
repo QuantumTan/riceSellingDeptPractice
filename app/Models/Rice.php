@@ -18,6 +18,8 @@ class Rice extends Model
             // $table->timestamps();
         // });
 
+        protected $table = 'rices';
+
         protected $fillable = [
             'rice_name',
             'price',

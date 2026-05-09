@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rice_id')->constrained();
+            $table->foreignId('rices_id')->constrained();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->decimal('qty', 10, 2);
             $table->decimal('subtotal', 10, 2);

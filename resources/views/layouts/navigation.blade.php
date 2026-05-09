@@ -23,7 +23,7 @@
             </ul>
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <x-nav-link :active="request()->routeIs('rice')" :href="route('rice.index')">
+                    <x-nav-link :active="request()->routeIs('rices')" :href="route('rices.index')">
                         {{ __('Rice') }}
                     </x-nav-link>
                 </li>

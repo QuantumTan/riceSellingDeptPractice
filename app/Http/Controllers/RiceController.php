@@ -13,8 +13,8 @@ class RiceController extends Controller
      */
     public function index()
     {
-        $rice = Rice::latest()->paginate(10);
-        return view('rice.index', compact('rice'));
+        $rices = Rice::latest()->paginate(10);
+        return view('rice.index', compact('rices'));
     }
 
     /**
@@ -29,7 +29,7 @@ class RiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRiceRequest $request, Rice $rice)
+    public function store(StoreRiceRequest $request, Rice $rices)
     {
         //
         Rice::create($request->validated());
@@ -40,37 +40,37 @@ class RiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Rice $rice)
+    public function show(Rice $rices)
     {
         //
-        return view('rice.show', compact('rice'));
+        return view('rice.show', compact('rices'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Rice $rice)
+    public function edit(Rice $rices)
     {
         //
-        return view('rice.edit', compact('rice'));
+        return view('rice.edit', compact('rices'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRiceRequest $request, Rice $rice)
+    public function update(UpdateRiceRequest $request, Rice $rices)
     {
         //
-        $rice->update($request->validated());
+        $rices->update($request->validated());
         return redirect()->route('rice.index')->with('success', 'Rice is updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rice $rice)
+    public function destroy(Rice $rices)
     {
-        $rice->delete();
+        $rices->delete();
 
         return redirect()->route('rice.index')->with('success', 'Rice deleted!');
     }

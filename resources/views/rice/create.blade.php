@@ -13,9 +13,16 @@
                         @csrf
                         <div class="mb-3">
                             <label for="rice_name" class="form-label">Rice Name</label>
-                            <input type="text" name="rice_name" id="rice_name"
-                                class="form-control @error('rice_name') is-invalid @enderror"
-                                value="{{ old('rice_name') }}">
+                            <select name="rice_name" id="rice_name"
+                                class="form-select @error('rice_name') is-invalid @enderror">
+                                <option value="">-- Select Rice --</option>
+                                <option value="Jasmine" {{ old('rice_name') == 'Jasmine' ? 'selected' : '' }}>Jasmine
+                                </option>
+                                <option value="Brown" {{ old('rice_name') == 'Brown' ? 'selected' : '' }}>Brown
+                                </option>
+                                <option value="Dinorado" {{ old('rice_name') == 'Dinorado' ? 'selected' : '' }}>Dinorado
+                                </option>
+                            </select>
                             @error('rice_name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
