@@ -28,6 +28,13 @@
                     </x-nav-link>
                 </li>
             </ul>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <x-nav-link :active="request()->routeIs('customer')" :href="route('customer.index')">
+                        {{ __('Customers') }}
+                    </x-nav-link>
+                </li>
+            </ul>
 
             <!-- Right Side -->
             <ul class="navbar-nav ms-auto">

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Rice extends Model
 {
@@ -27,7 +28,8 @@ class Rice extends Model
             'description',
         ];
 
-        public function order_items(){
+        public function order_items() : HasMany
+        {
             return $this->hasMany(Order_item::class);
         }
 }

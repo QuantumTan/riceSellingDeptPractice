@@ -8,5 +8,64 @@ use App\Http\Requests\UpdateCustomerRequest;
 
 class CustomerController extends Controller
 {
-//    place the creation of customer in order controller becasue there is no need for customer management.
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+        $customers = Customer::latest()->paginate(5);
+        return view('customer.index', compact('customers'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('customer.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreCustomerRequest $request, Customer $customer)
+    {
+        Customer::create($request->validated());
+        return redirect()->route('customer.index')->with('Success', $customer->first_name . ' ' . $customer->last_name . ' ' . 'added successful!');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Customer $customer)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Customer $customer)
+    {
+        return view('customer.edit', compact('customer'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateCustomerRequest $request, Customer $customer)
+    {
+        $customer->update($request->validated());
+        return redirect()->route('customer.index')->with('Success', $customer->first_name . ' ' . $customer->last_name . ' ' . 'updated successful!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Customer $customer)
+    {
+        $customer->delete();
+        return redirect()->route('customer.index')->with('success',  $customer->first_name . ' ' . $customer->last_name . ' ' . 'updated successful!');
+    }
 }

@@ -13,7 +13,7 @@ class RiceController extends Controller
      */
     public function index()
     {
-        $rices = Rice::latest()->paginate(4);
+        $rices = Rice::latest()->paginate(5);
         return view('rice.index', compact('rices'));
     }
 
